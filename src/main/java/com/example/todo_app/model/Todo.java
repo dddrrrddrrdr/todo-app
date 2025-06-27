@@ -1,6 +1,7 @@
 package com.example.todo_app.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -34,5 +35,18 @@ public class Todo {
 
   public void setFinished(boolean finished) {
     this.finished = finished;
+  }
+
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  @JsonBackReference
+  private User user;
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 }
