@@ -24,7 +24,7 @@ class UserControllerTest {
   void testCreateUser() {
     User user = new User();
     Todo todo = new Todo();
-    user.setTodos(Collections.singletonList(todo));
+    user.setTodos(new ArrayList<>(List.of(todo)));
 
     when(userRepository.save(user)).thenReturn(user);
 

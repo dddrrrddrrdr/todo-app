@@ -33,7 +33,7 @@ public class TodoController {
   @PutMapping("/{id}")
   public Todo updateTodo(@PathVariable Long id, @RequestBody Todo updatedTodo) {
     return todoRepository.findById(id).map(todo -> {
-      todo.setTitle(todo.getTitle());
+      todo.setTitle(updatedTodo.getTitle());
       todo.setFinished(updatedTodo.isFinished());
       return todoRepository.save(todo);
     }).orElse(null);
